@@ -1,9 +1,9 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic.base import TemplateView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.edit import FormView, CreateView, UpdateView, DeleteView
 
 from .models import *
 
@@ -15,36 +15,55 @@ class HomepageView(TemplateView):
 
     template_name = 'christmas/index.html'
 
+
 class GroupCreateView(CreateView):
     
     model = Group
     fields = ['name']
     template_name_suffix = '_create_form'
-    success_url = reverse_lazy('view_group')
+    success_url = reverse_lazy('index')
 
 
-class ListView(ListView):
+class InviteView(FormView):
+    pass
+
+class GroupUpdateView(UpdateView):
     
-    model = List
+    model = Group
+    fields = ['name']
+    template_name_suffix = '_update_form'
+    success_url = reverse_lazy('index')
 
-    def get_queryset(self, **kwargs):
-        queryset = List.ojects.filter()
-
-        return queryset
+    def get_object(self, queryset=None):
+        return get_object_or_404(Group, address=self.kwargs['group_id'])
 
     def get_context_data(self, **kwargs):
-        context = super(FarmList, self).get_context_data(**kwargs)
-        context['isManager'] = self.request.user.has_perm("mainForm.view_all_data")
+        context = super(GroupUpdateView, self).get_context_data(**kwargs)
+        context['address'] = self.kwargs['group_id']
+        context['object_list'] = get_object_or_404(Group, address=self.kwargs['group_id'])
         return context
 
 
-class GroupUpdateView(UpdateView):
-    pass
-
-
 class ListCreateView(CreateView):
-    pass
+    
+    model = List
+    fields = ['title', 'description', 'link']
+    template_name_suffix = '_create_form'
+    success_url = reverse_lazy('index')
 
 
 class ListUpdateView(CreateView):
-    pass
+    
+    model = Group
+    fields = ['name']
+    template_name_suffix = '_update_form'
+    success_url = reverse_lazy('index')
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(Group, address=self.kwargs['group_id'])
+
+    def get_context_data(self, **kwargs):
+        context = super(GroupUpdateView, self).get_context_data(**kwargs)
+        context['address'] = self.kwargs['group_id']
+        context['object_list'] = get_object_or_404(Group, address=self.kwargs['group_id'])
+        return context

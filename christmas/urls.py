@@ -5,6 +5,8 @@ from .views import *
 
 urlpatterns = [
     url(r'^$', HomepageView.as_view(), name='index'),
-    url(r'^$', GroupCreateView.as_view(), name='create_group'),
-    url(r'^(?P<group_id>[0-9]+)/', ListView.as_view(), name='view_group'),
+    url(r'^create/$', GroupCreateView.as_view(), name='create_group'),
+    url(r'^(?P<group_id>[0-9A-Za-z]+)/$', GroupUpdateView.as_view(), name='view_group'),
+    url(r'^(?P<group_id>[0-9A-Za-z]+)/invite/$', InviteView.as_view(), name='invite'),
+    url(r'^(?P<group_id>[0-9A-Za-z]+)/(?P<list_id>[0-9A-Za-z]+)/$', InviteView.as_view(), name='invite'),
 ]
