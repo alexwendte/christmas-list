@@ -1,0 +1,7 @@
+.index {
+  color: #fff; }
+  .index h1::last-word {
+    color: #006611;
+    font-weight: 500; }
+
+/*# sourceMappingURL=index.css.map */
