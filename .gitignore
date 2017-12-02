@@ -5,4 +5,5 @@
 *.sqlite3
 mysite/local_settings.py
 static/
+venv/
 googleApi.txt
