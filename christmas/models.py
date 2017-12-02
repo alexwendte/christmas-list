@@ -4,7 +4,7 @@ from django.db import models
 
 class Group(models.Model):
     
-    lists = models.ManyToManyField()
+    # lists = models.ManyToManyField()
     # name = models.CharField()
     pass
 
