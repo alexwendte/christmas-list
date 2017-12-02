@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponse
+from django.urls import reverse_lazy
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -12,11 +13,13 @@ def generic(request):
 class GroupCreateView(CreateView):
     
     model = Group
-    fields = ['name', 'lists']
+    fields = ['name']
+    template_name_suffix = '_create_form'
+    success_url = reverse_lazy('view_group')
 
 
 class ListListView(ListView):
-    pass
+    
 
 
 class GroupUpdateView(UpdateView):
