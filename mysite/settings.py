@@ -19,11 +19,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'j#auk!#qzrd5fl5%pcmud$btvz5tw9e!z7o!p8#tyslms9!3o_'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# Import local setup settings
+try:
+    from .local_settings import *
+except ImportError:
+    pass
 
 ALLOWED_HOSTS = []
 
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'christmas.apps.ChristmasConfig'
 ]
 
 MIDDLEWARE = [
@@ -115,6 +116,12 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.11/howto/static-files/
+# https://docs.djangoproject.com/en/1.10/howto/static-files/
 
-STATIC_URL = '/static/'
+PROJECT_DIR = os.path.dirname(__file__)
+
+STATIC_URL = '/staticfiles/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = (
+    os.path.join(os.path.dirname(PROJECT_DIR), 'christmas/static'),
+)
