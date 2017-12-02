@@ -25,7 +25,7 @@ try:
 except ImportError:
     pass
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['group-christmas-list.herokuapp.com', 'christmasmadesimple.net']
 
 
 # Application definition
