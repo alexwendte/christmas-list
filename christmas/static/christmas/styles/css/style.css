@@ -1,0 +1,86 @@
+#map {
+  height: 500px;
+  width: 100%;
+  border-radius: 5px; }
+
+.historical #map {
+  display: none; }
+
+#training-photo {
+  max-width: 100%; }
+
+.card-header {
+  text-align: center; }
+
+.aboutUs {
+  width: 950px;
+  margin-left: auto;
+  margin-right: auto; }
+  .aboutUs h5 {
+    margin: auto;
+    width: 75%; }
+  .aboutUs p {
+    padding: 10px;
+    margin: auto;
+    width: 75%; }
+  .aboutUs img {
+    width: 250px;
+    height: 250px; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  min-width: 425px; }
+
+#floating-panel {
+  position: absolute;
+  top: 30px;
+  left: 25px;
+  z-index: 5;
+  background-color: #fff;
+  padding: 5px;
+  border-radius: 3px;
+  text-align: center;
+  font-family: 'Roboto','sans-serif';
+  line-height: 20px;
+  padding-left: 10px; }
+  #floating-panel input[type="textbox"] {
+    position: relative;
+    border: none;
+    padding: 3px;
+    outline: none;
+    z-index: 0; }
+  #floating-panel input[type="image"] {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    top: 5px;
+    left: 2px;
+    margin-right: 4px; }
+
+.historical #floating-panel {
+  position: relative;
+  padding: 0px;
+  height: 30px;
+  width: 100%;
+  margin: auto;
+  max-width: 600px;
+  top: -10px;
+  left: 0px;
+  border: 1.2px solid #f2f2f2;
+  border-radius: 5px;
+  overflow: hidden; }
+  .historical #floating-panel input[type="textbox"] {
+    position: absolute;
+    width: 100%;
+    left: 3px; }
+  .historical #floating-panel input[type="image"] {
+    position: absolute;
+    right: 0px;
+    left: auto;
+    outline: none; }
+
+/*# sourceMappingURL=style.css.map */
+
+/*# sourceMappingURL=style.css.map */
