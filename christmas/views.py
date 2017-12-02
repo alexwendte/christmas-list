@@ -20,6 +20,7 @@ class GroupCreateView(CreateView):
 
 class ListListView(ListView):
     
+    model = List
 
 
 class GroupUpdateView(UpdateView):

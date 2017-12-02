@@ -5,5 +5,5 @@ from .views import *
 
 urlpatterns = [
     url(r'^$', GroupCreateView.as_view(), name='index'),
-    url(r'^$', GroupCreateView.as_view(), name='view_group'),
+    url(r'^(?P<group_id>[0-9]+)/', ListListView.as_view(), name='view_group'),
 ]
