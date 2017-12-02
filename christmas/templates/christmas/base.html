@@ -9,12 +9,11 @@
         <link rel="shortcut icon" href="{% static 'christmas/images/favicon.ico' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'christmas/styles/css/style.css' %}">
         <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-        <script src="{% static 'christmas/scripts/index.js' %}"></script>
-    </head>
-
-    <body>
+        <script src="{% static 'christmas/scripts/base.js' %}"></script>
         <script src="https://apis.google.com/js/platform.js" async defer></script>
         <meta name="google-signin-client_id" content="421515564266-3r1jp4ticqthamh9782vtkgj0l4v96re.apps.googleusercontent.com">
+    </head>
+    <body>
         <a href="#" onclick="signOut();">Sign out</button>
         {% block content %}
         {% endblock %}
