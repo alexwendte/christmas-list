@@ -1,86 +1,71 @@
-#map {
-  height: 500px;
-  width: 100%;
-  border-radius: 5px; }
+*, *:before, *:after {
+  box-sizing: border-box; }
 
-.historical #map {
-  display: none; }
-
-#training-photo {
-  max-width: 100%; }
-
-.card-header {
-  text-align: center; }
-
-.aboutUs {
-  width: 950px;
-  margin-left: auto;
-  margin-right: auto; }
-  .aboutUs h5 {
-    margin: auto;
-    width: 75%; }
-  .aboutUs p {
-    padding: 10px;
-    margin: auto;
-    width: 75%; }
-  .aboutUs img {
-    width: 250px;
-    height: 250px; }
-
-html, body {
-  height: 100%;
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
   margin: 0;
   padding: 0;
-  min-width: 425px; }
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  text-decoration: none; }
 
-#floating-panel {
-  position: absolute;
-  top: 30px;
-  left: 25px;
-  z-index: 5;
-  background-color: #fff;
-  padding: 5px;
-  border-radius: 3px;
-  text-align: center;
-  font-family: 'Roboto','sans-serif';
-  line-height: 20px;
-  padding-left: 10px; }
-  #floating-panel input[type="textbox"] {
-    position: relative;
-    border: none;
-    padding: 3px;
-    outline: none;
-    z-index: 0; }
-  #floating-panel input[type="image"] {
-    position: relative;
-    width: 20px;
-    height: 20px;
-    top: 5px;
-    left: 2px;
-    margin-right: 4px; }
+html {
+  font-size: 62.5%; }
 
-.historical #floating-panel {
-  position: relative;
-  padding: 0px;
-  height: 30px;
-  width: 100%;
-  margin: auto;
-  max-width: 600px;
-  top: -10px;
-  left: 0px;
-  border: 1.2px solid #f2f2f2;
-  border-radius: 5px;
-  overflow: hidden; }
-  .historical #floating-panel input[type="textbox"] {
-    position: absolute;
-    width: 100%;
-    left: 3px; }
-  .historical #floating-panel input[type="image"] {
-    position: absolute;
-    right: 0px;
-    left: auto;
-    outline: none; }
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
 
-/*# sourceMappingURL=style.css.map */
+body {
+  line-height: 1; }
+
+h1 {
+  font-size: 2rem; }
+
+h2 {
+  font-size: 1.5rem; }
+
+h3 {
+  font-size: 1.17rem; }
+
+h4 {
+  font-size: 1.12rem; }
+
+h5 {
+  font-size: .83rem; }
+
+h6 {
+  font-size: .75rem; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+.invite {
+  background-color: red; }
 
 /*# sourceMappingURL=style.css.map */

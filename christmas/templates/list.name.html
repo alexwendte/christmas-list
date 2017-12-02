@@ -1,18 +1,9 @@
-{% extends 'history/base.html' %}
-{% block title %} Google Map Finder {% endblock %}
+{% extends 'christmas/base.html' %}
+{% block title %} List Name {% endblock %}
 {% block content %}
 {% load static %}
 
-  <div id="floating-panel">
-        <input id="address" type="textbox" placeholder="Search your City" value="">
-        <input id="submit" type="image" src="{% static 'history/images/search-128.png' %}">
+  <div id="list-name">
+    
   </div>
-  <div id="map"></div>
-  <script src="{% static 'history/scripts/map.js' %}"></script>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDs45NMgk3kOMM47toBBXMsZoNSsJDwers&callback=initMap">
-  </script>
-  <div class="card">
-    <div class="card-footer">
-      2017 Google Maps used for educational purposes.
-    </div>
 {% endblock %}
