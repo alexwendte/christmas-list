@@ -2,7 +2,6 @@
 *.xml
 *.idea/
 *.vscode/
-*.sqlite3
 mysite/local_settings.py
 googleApi.txt
 venv/
