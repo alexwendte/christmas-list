@@ -4,10 +4,17 @@
 {% load static %}
 
 <div class="index">
-    <script src="{% static 'christmas/scripts/index.js' %}"></script>    
-    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+  <script src="{% static 'christmas/scripts/index.js' %}"></script>    
+  <div class="card">
+    <div class="row">
+      <a href="">Create A New List Set</a>
+      <a href="">Visit an Existing List Set</a>
+    </div>
+    <div class="row">
+      <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    </div>
+  </div>
 </div>
-    <p> Hello </p>
 
 
 {%endblock%}
