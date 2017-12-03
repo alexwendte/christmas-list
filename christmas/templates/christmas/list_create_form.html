@@ -1,0 +1,20 @@
+{% extends 'christmas/base.html' %}
+{% block title %} Create a Set {% endblock %}
+{% block content %}
+{% load static %}
+  <div class="list-create">
+    <form action="" method="post">
+      {% csrf_token %}
+      {% for field in form %}
+      <p class="input">
+          <label for="{{ field.id_for_label }}" class="noselect">
+            <span>{{ field.label }}</span>
+          </label>
+        {{ field }}
+      </p>
+      {% endfor %}
+      <input type="submit" value="Update" />
+    </form>
+  </div>
+
+{% endblock %}

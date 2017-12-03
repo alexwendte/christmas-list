@@ -1,4 +1,6 @@
 from django.db import models
+from django.urls import reverse_lazy
+
 from .helpers import random_alpha_numeric
 
 # Create your models here.
@@ -13,16 +15,22 @@ class Group(models.Model):
     def __str__(self):
         return str(self.name)
 
+    def get_absolute_url(self):
+        return reverse_lazy('view_group', kwargs={'group_id':self.address})
+
 
 class List(models.Model):
     
     items = models.ManyToManyField('Item')
     name = models.CharField(max_length=20)
-    profile = models.ForeignKey('Profile')
-    # decoration = something
+    # profile = models.ForeignKey('Profile')
+    parent = models.ForeignKey('Group')
 
     def __str__(self):
         return str(self.name)
+
+    def get_absolute_url(self):
+        return reverse_lazy('view_list', kwargs={'list_id':self.id, 'group_id':self.parent.address})
 
 
 class Item(models.Model):
@@ -31,9 +39,13 @@ class Item(models.Model):
     description = models.CharField(max_length=400)
     link = models.CharField(max_length=400)
     picture_link = models.CharField(max_length=400)
+    parent = models.ForeignKey('List')
 
     def __str__(self):
         return str(self.title)
+
+    def get_absolute_url(self):
+        return reverse_lazy('view_item', kwargs={'item_id':self.id, 'list_id':self.parent.id, 'group_id':self.parent.parent.address})
 
 
 class Profile(models.Model):
