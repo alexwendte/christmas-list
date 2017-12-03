@@ -3,9 +3,9 @@
 {% block content %}
 {% load static %}
 
-<div class="">
+<div class="item-update">
     
-    <form action="" method="post">
+    <form class="flex-form" action="" method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="Update" />

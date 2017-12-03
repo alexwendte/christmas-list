@@ -3,7 +3,7 @@
 {% block content %}
 {% load static %}
   <div class="list-create flex-body">
-    <form action="" method="post">
+    <form class="flex-form" action="" method="post">
       <h2>Add Your List</h2>
       {% csrf_token %}
       {% for field in form %}

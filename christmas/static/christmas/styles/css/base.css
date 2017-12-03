@@ -1,6 +1,12 @@
 body {
   background-color: #00661194;
   font-size: 1.6rem; }
+  body a {
+    z-index: 10;
+    color: white; }
+  body a:hover {
+    background-color: orange;
+    color: red; }
   body .header {
     padding: 1rem;
     box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.7);

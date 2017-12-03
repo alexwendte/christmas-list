@@ -20,5 +20,31 @@ html .flex-body {
   top: 0;
   height: 100%;
   width: 100%; }
+html .flex-form {
+  background-color: #006611;
+  padding: 2em 4em;
+  border-radius: 1em;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column; }
+  html .flex-form h2 {
+    color: #fff; }
+  html .flex-form label {
+    color: #fff; }
+  html .flex-form input[type="text"] {
+    line-height: 1.5em;
+    margin: 1em;
+    padding: .2em;
+    border: none;
+    border-radius: .2em; }
+  html .flex-form input[type="submit"] {
+    padding: 1em;
+    color: #006611;
+    background-color: #fff;
+    border-radius: 1em;
+    font-weight: 600;
+    border: none;
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.7);
+    cursor: pointer; }
 
 /*# sourceMappingURL=templates.css.map */

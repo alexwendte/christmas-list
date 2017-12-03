@@ -2,8 +2,8 @@
 {% block title %} Create a Set {% endblock %}
 {% block content %}
 {% load static %}
-  <div class="item-create">
-    <form action="" method="post">
+  <div class="item-create flex-body">
+    <form class="flex-form" action="" method="post">
       {% csrf_token %}
       {% for field in form %}
         {% if not field.is_hidden %}
@@ -19,7 +19,7 @@
             </p>
         {% endif %}
       {% endfor %}
-      <input type="submit" value="Create" />
+      <input class="button" type="submit" value="Create" />
     </form>
   </div>
 

@@ -8,6 +8,7 @@
     flex-direction: column; 
       h2{
         color: #fff;
+        text-align: center;
       }
       label{
         color: #fff;
@@ -15,6 +16,7 @@
       input[type="text"]{
         line-height: 1.5em;
         margin: 1em;
+        margin-right: 0;
         padding: .2em;
         border: none;
         border-radius: .2em;
