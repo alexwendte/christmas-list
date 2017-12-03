@@ -11,14 +11,13 @@
         <input type="submit" value="Update" />
     </form>
 
-    {% for object in oject_list %}
-    
-        {{ object }}
-        {% for item in object.items %}
-            {{ item }}
-        {% endfor %}
-
+    <p>
+    {% for item in object.items %}
+        {{ item }}
     {% endfor %}
+    </p>
+
+    <a href="{% url 'create_list' group_id=address %}">Create a new list</a>
 
   </div>
 

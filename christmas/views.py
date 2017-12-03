@@ -43,21 +43,26 @@ class GroupUpdateView(UpdateView):
 class ListCreateView(CreateView):
     
     model = List
-    fields = ['name', 'parent']
+    fields = ['name', 'group_address']
     template_name_suffix = '_create_form'
 
+    def get_initial(self, **kwargs):
+        newInitial = self.initial
+        newInitial['group_address'] = self.kwargs['group_id']
+        return newInitial
 
-class ListUpdateView(CreateView):
+
+class ListUpdateView(UpdateView):
     
-    model = Group
-    fields = ['name', 'parent']
+    model = List
+    fields = ['name']
     template_name_suffix = '_update_form'
 
     def get_object(self, queryset=None):
-        return get_object_or_404(Group, address=self.kwargs['list_id'])
+        return get_object_or_404(List, id=self.kwargs['list_id'])
 
     def get_context_data(self, **kwargs):
         context = super(ListUpdateView, self).get_context_data(**kwargs)
-        context['address'] = self.kwargs['list_id']
-        context['object_list'] = get_object_or_404(List, id=self.kwargs['list_id'])
+        context['address'] = self.kwargs['group_id']
+        context['object_list'] = list(get_object_or_404(List, id=self.kwargs['list_id']).items)
         return context
