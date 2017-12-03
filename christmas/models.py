@@ -39,12 +39,14 @@ class Item(models.Model):
     description = models.CharField(max_length=400)
     link = models.CharField(max_length=400)
     picture_link = models.CharField(max_length=400)
+    group_address = models.CharField(max_length=15)
+    parent_id = models.IntegerField(default=0)
 
     def __str__(self):
         return str(self.title)
 
     def get_absolute_url(self):
-        return reverse_lazy('view_item', kwargs={'item_id':self.id, 'list_id':self.parent.id, 'group_id':self.parent.parent.address})
+        return reverse_lazy('view_item', kwargs={'item_id':self.id, 'list_id':self.parent_id, 'group_id':self.group_address})
 
 
 class Profile(models.Model):
