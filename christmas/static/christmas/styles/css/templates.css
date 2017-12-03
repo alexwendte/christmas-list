@@ -3,8 +3,22 @@ html .button {
   background-color: #fff;
   border-radius: .5em;
   font-weight: 600;
-  margin: 0 1em; }
+  margin: 0 1em;
+  color: #006611;
+  border: none;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.7);
+  z-index: 5;
+  cursor: pointer; }
 html a.button {
-  color: #006611; }
+  color: #006611;
+  z-index: 5; }
+html .flex-body {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  height: 100%;
+  width: 100%; }
 
 /*# sourceMappingURL=templates.css.map */

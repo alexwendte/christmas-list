@@ -1,19 +1,23 @@
 {% extends 'christmas/base.html' %}
-{% block title %} Create a Set {% endblock %}
+{% block title %} Create a List {% endblock %}
 {% block content %}
 {% load static %}
-  <div class="list-create">
+  <div class="list-create flex-body">
     <form action="" method="post">
       {% csrf_token %}
-      {% for field in form %}
-      <p class="input">
-          <label for="{{ field.id_for_label }}" class="noselect">
-            <span>{{ field.label }}</span>
+      <div class="row">
+          <label for="{{ form.0.id_for_label }}" class="noselect">
+            <span>{{ form.0.label }}</span>
+          </label>dsdfds
+        {{ form.0 }}
+      </div>
+      <div class="row hidden">
+          <label for="{{ form.1.id_for_label }}" class="noselect">
+            <span>{{ form.1.label }}</span>
           </label>
-        {{ field }}
-      </p>
-      {% endfor %}
-      <input type="submit" value="Create" />
+        {{ form.1 }}
+      </div>
+      <input class="button" type="submit" value="Create" />
     </form>
   </div>
 

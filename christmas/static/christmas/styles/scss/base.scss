@@ -1,30 +1,39 @@
 @import 'variables';
 
 body{
-  background-color: $background-color;
+  background-color: #00661194;
   font-size: 1.6rem;
   .header{
     padding: 1rem;
-    line-height: 2rem;
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.7);
+
+    text-align: center;
+    background-color: $background-color;
+    z-index: 4;
     .main{
       position: relative;
-      padding: 1rem;
       display: inline-block;
       font-size: 3.2rem;
       color: #fff;
       font-weight: 600;
     }
     .sign-out{
-      padding: 1rem;
-      position: relative;
       float: right;
-      font-weight: 600;
-      border-radius: 1em;
-      background-color: white;
-      color: $accent-color;
-      box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.7);
-      cursor: pointer;
+      display: block;
+      padding: 1rem;
+      margin: 0;
       z-index:5;
+      cursor: pointer;
     }
+    a.sign-out{
+      z-index: 5;
+      cursor: pointer;
+    }
+    a.sign-out:hover{
+      cursor: pointer;
+    }
+  }
+  a:hover{
+    cursor: pointer;
   }
 }

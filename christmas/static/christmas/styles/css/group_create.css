@@ -1,38 +1,30 @@
-.group-create, .group-update {
-  position: absolute;
+.group-create form, .group-update form {
+  background-color: #006611;
+  padding: 2em 4em;
+  border-radius: 1em;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.7);
   display: flex;
-  align-items: center;
-  justify-content: center;
-  top: 0;
-  height: 100%;
-  width: 100%; }
-  .group-create form, .group-update form {
-    background-color: #006611;
-    padding: 2em 4em;
+  flex-direction: column; }
+  .group-create form h2, .group-update form h2 {
+    color: #fff; }
+  .group-create form label, .group-update form label {
+    color: #fff; }
+  .group-create form input[type="text"], .group-update form input[type="text"] {
+    line-height: 1.5em;
+    margin: 1em;
+    padding: .2em;
+    border: none;
+    border-radius: .2em; }
+  .group-create form input[type="submit"], .group-update form input[type="submit"] {
+    padding: 1em;
+    color: #006611;
+    background-color: #fff;
     border-radius: 1em;
+    font-weight: 600;
+    border: none;
     box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.7);
-    display: flex;
-    flex-direction: column; }
-    .group-create form h2, .group-update form h2 {
-      color: #fff; }
-    .group-create form label, .group-update form label {
-      color: #fff; }
-    .group-create form input[type="text"], .group-update form input[type="text"] {
-      line-height: 1.5em;
-      margin: 1em;
-      padding: .2em;
-      border: none;
-      border-radius: .2em; }
-    .group-create form input[type="submit"], .group-update form input[type="submit"] {
-      padding: 1em;
-      color: #006611;
-      background-color: #fff;
-      border-radius: 1em;
-      font-weight: 600;
-      border: none;
-      box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.7);
-      cursor: pointer; }
-  .group-create .group-update form, .group-update .group-update form {
-    padding: 3em 4em; }
+    cursor: pointer; }
+.group-create .group-update form, .group-update .group-update form {
+  padding: 3em 4em; }
 
 /*# sourceMappingURL=group_create.css.map */

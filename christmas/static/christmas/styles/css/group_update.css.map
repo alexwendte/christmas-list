@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,aAAa;EACX,cAAc,EAAE,MAAM;EACtB,kBAAI;IACF,WAAW,EAAC,GAAG",
+"sources": ["../scss/group_update.scss"],
+"names": [],
+"file": "group_update.css"
+}

@@ -1,8 +1,8 @@
 {% extends 'christmas/base.html' %}
-{% block title %} Create a Set {% endblock %}
+{% block title %} Create a Collection {% endblock %}
 {% block content %}
 {% load static %}
-  <div class="group-create">
+  <div class="group-create flex-body">
     <form action="" method="post">
       {% csrf_token %}
       {% for field in form %}
