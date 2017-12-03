@@ -24,13 +24,13 @@ class List(models.Model):
     items = models.ManyToManyField('Item')
     name = models.CharField(max_length=20)
     # profile = models.ForeignKey('Profile')
-    parent = models.ForeignKey('Group')
+    group_address = models.CharField(max_length=15)
 
     def __str__(self):
         return str(self.name)
 
     def get_absolute_url(self):
-        return reverse_lazy('view_list', kwargs={'list_id':self.id, 'group_id':self.parent.address})
+        return reverse_lazy('view_list', kwargs={'list_id':self.id, 'group_id':self.group_address})
 
 
 class Item(models.Model):
@@ -39,7 +39,6 @@ class Item(models.Model):
     description = models.CharField(max_length=400)
     link = models.CharField(max_length=400)
     picture_link = models.CharField(max_length=400)
-    parent = models.ForeignKey('List')
 
     def __str__(self):
         return str(self.title)
