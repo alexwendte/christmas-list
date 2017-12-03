@@ -2,9 +2,10 @@
 {% block title %} Group ID {% endblock %}
 {% block content %}
 
-  <div class="">
+  <div class="group-update">
     
     <form action="" method="post">
+        <h2>Edit your list set name</h2>
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="Update" />

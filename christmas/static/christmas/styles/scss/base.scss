@@ -1,3 +1,16 @@
+@import 'variables';
 body{
-  background-color: #993333;
+  background-color: $background-color;
+  font-size: 1.6rem;
+  .sign-out{
+    padding: 1em;
+    position: relative;
+    float: right;
+    top: .5em;
+    right: .5em;
+    font-weight: 600;
+    border-radius: 1em;
+    background-color: white;
+    color: $accent-color;
+  }
 }

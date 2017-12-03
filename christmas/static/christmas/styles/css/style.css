@@ -33,22 +33,22 @@ body {
   line-height: 1; }
 
 h1 {
-  font-size: 2rem; }
+  font-size: 3.2rem; }
 
 h2 {
-  font-size: 1.5rem; }
+  font-size: 2.4rem; }
 
 h3 {
-  font-size: 1.17rem; }
+  font-size: 1.87rem; }
 
 h4 {
-  font-size: 1.12rem; }
+  font-size: 1.79rem; }
 
 h5 {
-  font-size: .83rem; }
+  font-size: 1.33rem; }
 
 h6 {
-  font-size: .75rem; }
+  font-size: 1.2rem; }
 
 ol, ul {
   list-style: none; }
@@ -69,12 +69,94 @@ table {
   background-color: red; }
 
 .index {
-  color: #fff; }
-  .index h1::last-word {
-    color: #006611;
-    font-weight: 500; }
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
+  .index a {
+    color: #fff; }
+  .index p {
+    color: #fff;
+    display: inline-block; }
+  .index p:last-child {
+    color: #06ac21;
+    font-weight: 500;
+    padding-left: .25em; }
+  .index .card {
+    margin: 0 auto;
+    width: 45rem;
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.7);
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+    .index .card .row:first-child {
+      font-size: 3.2rem;
+      clear: both;
+      line-height: 1em;
+      height: 1em;
+      width: 12.8em; }
+    .index .card .row {
+      margin: .5em 0;
+      display: flex;
+      text-align: center; }
+      .index .card .row a {
+        padding: 1em;
+        color: #006611;
+        background-color: #fff;
+        border-radius: .5em;
+        font-weight: 600;
+        margin: 0 1em; }
 
 body {
-  background-color: #993333; }
+  background-color: #993333;
+  font-size: 1.6rem; }
+  body .sign-out {
+    padding: 1em;
+    position: relative;
+    float: right;
+    top: .5em;
+    right: .5em;
+    font-weight: 600;
+    border-radius: 1em;
+    background-color: white;
+    color: #006611; }
+
+.group-update {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%; }
+  .group-update form {
+    background-color: #006611;
+    padding: 3em 4em;
+    border-radius: 1em;
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column; }
+    .group-update form h2 {
+      color: #fff; }
+    .group-update form label {
+      color: #fff; }
+    .group-update form input[type="text"] {
+      line-height: 1.5em;
+      margin: 1em;
+      padding: .2em;
+      border: none;
+      border-radius: .2em; }
+    .group-update form input[type="submit"] {
+      padding: 1em;
+      color: #006611;
+      background-color: #fff;
+      border-radius: 1em;
+      font-weight: 600;
+      border: none;
+      box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.7);
+      cursor: pointer; }
 
 /*# sourceMappingURL=style.css.map */

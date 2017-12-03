@@ -3,14 +3,15 @@
 {% block content %}
 {% load static %}
 
-<div class="index">    
-  <div class="header">
-    <h1>Christmas lists made simple</h1>
-  </div>
+<div class="index">
   <div class="card">
+      <div class="row">
+        <p>Christmas lists made</p>
+        <p>SIMPLE</p>
+      </div>
     <div class="row">
-      <a href="">Create A New List Set</a>
-      <a href="">Visit an Existing List Set</a>
+      <a href="{% url 'create_group' %}">Create A New Collection</a>
+      <a href="">Visit an Existing Collection</a>
     </div>
     <div class="row">
       <div class="g-signin2" data-onsuccess="onSignIn"></div>
