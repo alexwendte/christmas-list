@@ -1,15 +1,26 @@
 body {
   background-color: #993333;
   font-size: 1.6rem; }
-  body .sign-out {
-    padding: 1em;
-    position: relative;
-    float: right;
-    top: .5em;
-    right: .5em;
-    font-weight: 600;
-    border-radius: 1em;
-    background-color: white;
-    color: #006611; }
+  body .header {
+    padding: 1rem;
+    line-height: 2rem; }
+    body .header .main {
+      position: relative;
+      padding: 1rem;
+      display: inline-block;
+      font-size: 3.2rem;
+      color: #fff;
+      font-weight: 600; }
+    body .header .sign-out {
+      padding: 1rem;
+      position: relative;
+      float: right;
+      font-weight: 600;
+      border-radius: 1em;
+      background-color: white;
+      color: #006611;
+      box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.7);
+      cursor: pointer;
+      z-index: 5; }
 
 /*# sourceMappingURL=base.css.map */

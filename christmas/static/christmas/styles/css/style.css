@@ -65,13 +65,57 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
-.group-create {
-  background-color: red; }
+html .button {
+  padding: 1em;
+  background-color: #fff;
+  border-radius: .5em;
+  font-weight: 600;
+  margin: 0 1em; }
+html a.button {
+  color: #006611; }
+
+.group-create, .group-update {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  height: 100%;
+  width: 100%; }
+  .group-create form, .group-update form {
+    background-color: #006611;
+    padding: 2em 4em;
+    border-radius: 1em;
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column; }
+    .group-create form h2, .group-update form h2 {
+      color: #fff; }
+    .group-create form label, .group-update form label {
+      color: #fff; }
+    .group-create form input[type="text"], .group-update form input[type="text"] {
+      line-height: 1.5em;
+      margin: 1em;
+      padding: .2em;
+      border: none;
+      border-radius: .2em; }
+    .group-create form input[type="submit"], .group-update form input[type="submit"] {
+      padding: 1em;
+      color: #006611;
+      background-color: #fff;
+      border-radius: 1em;
+      font-weight: 600;
+      border: none;
+      box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.7);
+      cursor: pointer; }
+  .group-create .group-update form, .group-update .group-update form {
+    padding: 3em 4em; }
 
 .index {
   position: absolute;
   height: 100%;
   width: 100%;
+  top: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -82,12 +126,12 @@ table {
     color: #fff;
     display: inline-block; }
   .index p:last-child {
-    color: #06ac21;
-    font-weight: 500;
+    color: #df0d0d;
+    font-weight: 700;
     padding-left: .25em; }
   .index .card {
     margin: 0 auto;
-    width: 45rem;
+    background-color: #006611;
     box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.7);
     border-radius: 1em;
     display: flex;
@@ -102,61 +146,39 @@ table {
     .index .card .row {
       margin: .5em 0;
       display: flex;
-      text-align: center; }
-      .index .card .row a {
+      text-align: center;
+      /*a{
         padding: 1em;
-        color: #006611;
+        color: $accent-color;
         background-color: #fff;
         border-radius: .5em;
         font-weight: 600;
-        margin: 0 1em; }
+        margin: 0 1em;
+      }*/ }
 
 body {
   background-color: #993333;
   font-size: 1.6rem; }
-  body .sign-out {
-    padding: 1em;
-    position: relative;
-    float: right;
-    top: .5em;
-    right: .5em;
-    font-weight: 600;
-    border-radius: 1em;
-    background-color: white;
-    color: #006611; }
-
-.group-update {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%; }
-  .group-update form {
-    background-color: #006611;
-    padding: 3em 4em;
-    border-radius: 1em;
-    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.7);
-    display: flex;
-    flex-direction: column; }
-    .group-update form h2 {
-      color: #fff; }
-    .group-update form label {
-      color: #fff; }
-    .group-update form input[type="text"] {
-      line-height: 1.5em;
-      margin: 1em;
-      padding: .2em;
-      border: none;
-      border-radius: .2em; }
-    .group-update form input[type="submit"] {
-      padding: 1em;
-      color: #006611;
-      background-color: #fff;
-      border-radius: 1em;
+  body .header {
+    padding: 1rem;
+    line-height: 2rem; }
+    body .header .main {
+      position: relative;
+      padding: 1rem;
+      display: inline-block;
+      font-size: 3.2rem;
+      color: #fff;
+      font-weight: 600; }
+    body .header .sign-out {
+      padding: 1rem;
+      position: relative;
+      float: right;
       font-weight: 600;
-      border: none;
+      border-radius: 1em;
+      background-color: white;
+      color: #006611;
       box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.7);
-      cursor: pointer; }
+      cursor: pointer;
+      z-index: 5; }
 
 /*# sourceMappingURL=style.css.map */

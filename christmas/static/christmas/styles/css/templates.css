@@ -1,0 +1,10 @@
+html .button {
+  padding: 1em;
+  background-color: #fff;
+  border-radius: .5em;
+  font-weight: 600;
+  margin: 0 1em; }
+html a.button {
+  color: #006611; }
+
+/*# sourceMappingURL=templates.css.map */
