@@ -1,27 +1,21 @@
 @import 'variables';
 .index{
+  position: absolute;
     height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
   a{
     color: #fff;
   }
   .header{
-    font-size: 3.2rem;
-    clear: both;
-    line-height: 1em;
-    height: 1em;
-    width: 12.8em;
-    margin: 0 auto;
+    
   }
   p{
-    //float: left;
     color: #fff;
     display: inline-block;
-    //overflow-wrap: normal;
-    //white-space:normal
   }
   p:last-child{
     color: #06ac21;
@@ -29,28 +23,31 @@
     padding-left: .25em;
   }
   .card{
-    //width: 70%;
-    //margin: 0 auto;
-    text-align: center;
+    margin: 0 auto;
+    width: 45rem;
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.7);
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .row:first-child{
+      font-size: 3.2rem;
+      clear: both;
+      line-height: 1em;
+      height: 1em;
+      width: 12.8em;
+    }
     .row{
-      margin: 2em;
+      margin: .5em 0;
+      display: flex;
+      text-align: center;
       a{
         padding: 1em;
         color: $accent-color;
         background-color: #fff;
-        border-radius: 1em;
+        border-radius: .5em;
         font-weight: 600;
-      }
-      .g-signin2{
-        width: 10rem;
-        margin: 0 auto;
-      }
-    }
-  }
-  @media(min-width: 500px)
-  {
-    .card{
-      .row{
+        margin: 0 1em;
       }
     }
   }

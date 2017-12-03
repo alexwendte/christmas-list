@@ -1,10 +1,6 @@
-html {
-  height: 100%; }
-
 body {
   background-color: #993333;
-  font-size: 1.6rem;
-  height: 100%; }
+  font-size: 1.6rem; }
   body .sign-out {
     padding: 1em;
     position: relative;

@@ -1,11 +1,7 @@
 @import 'variables';
-html{
-  height: 100%;
-}
 body{
   background-color: $background-color;
   font-size: 1.6rem;
-  height: 100%;
   .sign-out{
     padding: 1em;
     position: relative;
