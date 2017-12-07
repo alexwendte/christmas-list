@@ -9,9 +9,9 @@ from .models import *
 from .forms import *
 
 # Create your views here.
-class HomepageView(TemplateView):
+class AboutView(TemplateView):
 
-    template_name = 'christmas/index.html'
+    template_name = 'christmas/about.html'
 
 class TokenView(View):
 
@@ -23,6 +23,11 @@ class GroupCreateView(CreateView):
     model = Group
     fields = ['name']
     template_name_suffix = '_create_form'
+
+    def get_initial(self, **kwargs):
+        initial = self.initial
+        initial['name'] = "New Group Name"
+        return initial
 
 
 class InviteView(FormView):

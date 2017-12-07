@@ -1,21 +1,31 @@
 {% extends 'christmas/base.html' %}
-{% block title %} Create a Collection {% endblock %}
+{% block title %} Christmas Made Simple {% endblock %}
 {% block content %}
-{% load static %}
-  <div class="group-create flex-body">
-    <form action="" method="post">
-      {% csrf_token %}
-      {% for field in form %}
-      <h2>Create Your Collection</h2>
+  {% load static %}
+
+  <form action="" method="post">
+    {% csrf_token %}
+
+    {% for field in form %}
+
       <div class="row">
-        <label for="{{ field.id_for_label }}" class="noselect">
-          {{ field.label }}
-        </label>
-        {{ field }}
-        {% endfor %}
+        <div class="col align-self-center" style="text-align: center;">
+          {{ field }}
+        </div>
       </div>
-      <input type="submit" value="Create" />
-    </form>
-  </div>
+
+    {% endfor %}
+    
+    <br>
+    <br>
+    
+    <div class="row">
+      <div class="col align-self-center" style="text-align: center;">
+          <input type="submit" value="Create Group" />
+      </div>
+    </div>
+
+    
+  </form>
 
 {% endblock %}
