@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse, get_object_or_404
 
-from django.views.generic.base import TemplateView
+from django.views.generic.base import View, TemplateView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.views.generic.edit import FormView, CreateView, UpdateView, DeleteView
@@ -13,6 +13,10 @@ class HomepageView(TemplateView):
 
     template_name = 'christmas/index.html'
 
+class TokenView(View):
+
+    def post(self, request, *args, **kwargs):
+        print(request.POST)
 
 class GroupCreateView(CreateView):
     
@@ -44,13 +48,18 @@ class GroupUpdateView(UpdateView):
 class ListCreateView(CreateView):
     
     model = List
-    form_class = ListCreateForm
+    fields = ['name']
     template_name_suffix = '_create_form'
 
-    def get_initial(self, **kwargs):
-        newInitial = self.initial
-        newInitial['group_address'] = self.kwargs['group_id']
-        return newInitial
+    def form_valid(self, form):
+         parent_group = get_object_or_404(Group, address=self.kwargs['group_id'])
+         form.instance.parent_group = parent_group
+         return super(ListCreateView, self).form_valid(form)
+
+    # def get_initial(self, **kwargs):
+    #     newInitial = self.initial
+    #     newInitial['parent_group'] = get_object_or_404(Group, address=self.kwargs['group_id'])
+    #     return newInitial
 
 
 class ListUpdateView(UpdateView):
