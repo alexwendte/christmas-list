@@ -6,16 +6,23 @@
 <div class="list-update flex-body">
     
     <form action="" method="post">
+        <h2>Edit your list set name</h2>
         {% csrf_token %}
-        {{ form.as_p }}
+        {% for field in form %}
+            {{ field }}
+        {% endfor %}
         <input type="submit" value="Update" />
     </form>
-    <p>
-        {{ object_list }}
-        {% for object in object_list %}
-            {{ object }}
+    
+    <ul>
+        {% for item in object_list %}
+            <li><a href="{% url 'view_item' group_id=address list_id=list_id item_id=item.id %}">{{ item }}</a></li>
         {% endfor %}
-    </p>
+    </ul>
+
+    <div class="row">
+        <a class="button" href="{% url 'create_item' group_id=address list_id=list_id %}">Add a new item</a>
+    </div>
 
 </div>
     

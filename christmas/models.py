@@ -9,7 +9,7 @@ class Group(models.Model):
     
     name = models.CharField(max_length=20)
     address = models.CharField(max_length=15, default=random_alpha_numeric(7))
-    users = models.ManyToManyField('Profile', related_name='parent_group')
+    # users = models.ManyToManyField('Profile', related_name='parent_group')
 
     def __str__(self):
         return str(self.name)

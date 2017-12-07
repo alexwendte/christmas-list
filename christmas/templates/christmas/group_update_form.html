@@ -7,13 +7,18 @@
     <form action="" method="post">
         <h2>Edit your list set name</h2>
         {% csrf_token %}
-        {{ form.as_p }}
+        {% for field in form %}
+          {{ field }}
+        {% endfor %}
         <input type="submit" value="Update" />
     </form>
+    
+    <ul>
+      {% for item in object_list %}
+        <li><a href="{% url 'view_list' group_id=address list_id=item.id %}">{{ item }}</a></li>
+      {% endfor %}
+    </ul>
 
-    {% for item in object.items %}
-        {{ item }}
-    {% endfor %}
     <div class="row">
       <a class="button" href="{% url 'create_list' group_id=address %}">Create a new list</a>
     </div>
