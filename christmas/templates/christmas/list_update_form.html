@@ -1,21 +1,35 @@
 {% extends 'christmas/base.html' %} {% block title %} Edit List {% endblock %} {% block content %} {% load static %}
 
-<form action="" method="post">
-  <div class="row w-100 justify-content-center mr-0 ml-0">
-    {% csrf_token %} {% for field in form %}
 
-    <div class="col-12 name-box d-inline mt-2 mb-2" onclick="document.getElementById('update').hidden = false;">
-      {{ field }}
-    </div>
+<div class="row w-100 justify-content-center mr-0 ml-0">
+  <div class="card text-center" style="max-width: 600px;">
+    <div class="card-block">
+      <form action="" method="post">
 
-    {% endfor %}
+        {% csrf_token %} {% for field in form %}
+        <div class="col-12 list-name-box d-inline p-0 mb-2" onclick="document.getElementById('update').hidden = false;">
+          {{ field }}
+        </div>
+        {% endfor %}
 
-    <div class="col-md-auto d-inline mt-2 mb-2">
-      <input hidden class="btn btn-danger self-algin-center h-100" type="submit" value="Update Name" id="update" />
+        <div class="col-md-auto d-inline">
+          <input hidden class="btn btn-danger self-algin-center h-100 mt-2 mb-2" type="submit" value="Update Name" id="update" />
+        </div>
+      </form>
+      <br>
+      {% if object_list %}
+        <ul>
+        {% for item in object_list %}
+          <li>{{ item }}</li>
+        {% endfor %}
+        </ul>
+      {% else %}
+        <p>There are no items here yet! Press the Add Item button to get started!!</p>
+      {% endif %}
+      <a class="btn btn-danger" href="{% url 'create_item' group_id=address list_id=list_id %}">Add Item</a>
     </div>
   </div>
-</form>
-<br>
-<br>
+</div>
 
-{%endblock%}
+<br>
+<br> {%endblock%}
