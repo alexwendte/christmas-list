@@ -28,23 +28,23 @@
           <h4 class="card-title">{{ list.0 }}</h4>
           <p class="card-text">
             {% if list.1 %}
-              <ul>
-                {% for item in list.1 %}
-                  <li>{{ item }}</li>
-                {% endfor %}
-              </ul>
-            {% else %}
-              None
-            {% endif %}
+            <ul>
+              {% for item in list.1 %}
+              <li>{{ item }}</li>
+              {% endfor %}
+            </ul>
+            {% else %} None {% endif %}
           </p>
-          <a href="{% url 'view_list' group_id=address list_id=list.0.id %}" class="btn btn-danger">Edit List</a>
+          <div class="row w-100 justify-content-center mr-0 ml-0">
+            <a href="{% url 'view_list' group_id=address list_id=list.0.id %}" class="btn btn-danger mr-5 ml-auto">Edit List</a>
+          </div>
         </div>
       </div>
       {% endfor %}
     </div>
   </div>
 </div>
-<div class="row w-100 justify-content-center mr-0 ml-0">
-  <a class="btn btn-danger" href="{% url 'create_list' group_id=address %}">Create a new list</a>
+<div class="row w-100 justify-content-center mr-0 ml-0 pb-5">
+  <a class="btn btn-danger m-auto" href="{% url 'create_list' group_id=address %}">Create a new list</a>
 </div>
 {% endblock %}

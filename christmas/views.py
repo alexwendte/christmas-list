@@ -107,7 +107,7 @@ class ListUpdateView(UpdateView):
 class ItemCreateView(CreateView):
     
     model = Item
-    fields = ['title', 'description', 'link']
+    fields = ['title', 'description']
     template_name_suffix = '_create_form'
 
     def form_valid(self, form):

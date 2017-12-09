@@ -2,30 +2,39 @@
 
 
 <div class="row w-100 justify-content-center mr-0 ml-0">
-  <div class="card text-center" style="max-width: 600px;">
+  <div class="card" style="max-width: 500px;">
     <div class="card-block">
+      <div class="row w-100 justify-content-left mr-0 ml-0">
+        <button class="close ml-0 mr-auto" aria-label="Close">
+          <a href="{% url 'view_group' group_id=address %}" style="text-decoration: none; color: black;" aria-hidden="true">&times;</a>
+        </button>
+      </div>
       <form action="" method="post">
-
         {% csrf_token %} {% for field in form %}
-        <div class="col-12 list-name-box d-inline p-0 mb-2" onclick="document.getElementById('update').hidden = false;">
+        <div class="col-12 list-name-box p-0 mb-2" onclick="document.getElementById('update').hidden = false;">
           {{ field }}
         </div>
         {% endfor %}
 
-        <div class="col-md-auto d-inline">
+        <div class="col-md-auto">
           <input hidden class="btn btn-danger self-algin-center h-100 mt-2 mb-2" type="submit" value="Update Name" id="update" />
         </div>
       </form>
       <br>
-      {% if object_list %}
-        <ul>
-        {% for item in object_list %}
-          <li>{{ item }}</li>
-        {% endfor %}
-        </ul>
-      {% else %}
-        <p>There are no items here yet! Press the Add Item button to get started!!</p>
-      {% endif %}
+      <div class="card-text">
+        {% if object_list %}
+        <dl>
+          {% for item in object_list %}
+          <dt>{{ item }}</dt>
+          <dd>{{ item.description }} </dd>
+          {% endfor %}
+        </dl>
+        {% else %}
+        <p>There are no items here yet!
+          <br>Press the Add Item button to get started!!</p>
+        {% endif %}
+      </div>
+      <br>
       <a class="btn btn-danger" href="{% url 'create_item' group_id=address list_id=list_id %}">Add Item</a>
     </div>
   </div>

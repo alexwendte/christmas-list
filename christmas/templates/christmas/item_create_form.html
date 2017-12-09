@@ -1,26 +1,30 @@
-{% extends 'christmas/base.html' %}
-{% block title %} Create a Set {% endblock %}
-{% block content %}
-{% load static %}
-  <div class="item-create">
-    <form action="" method="post">
-      {% csrf_token %}
-      {% for field in form %}
-        {% if not field.is_hidden %}
+{% extends 'christmas/base.html' %} {% block title %} Create a Set {% endblock %} {% block content %} {% load static %}
+
+<div class="row w-100 h-100 justify-content-center mr-0 ml-0 pb-5">
+  <div class="col m-auto pb-5 pr-0 pl-0">
+    <div class="card m-auto" style="max-width: 350px;">
+      <div class="card-block text-center">
+        <h3 class="card-title">Add Item</h3>
+        <div class="card-text pt-4 pb-4">
+          <form action="" method="post">
+            {% csrf_token %} {% for field in form %} {% if not field.is_hidden %}
             <p class="input">
-                <label for="{{ field.id_for_label }}" class="noselect">
-                    <span>{{ field.label }}</span>
-                </label>
-                {{ field }}
+              <label for="{{ field.id_for_label }}" class="noselect">
+                <span>{{ field.label }}</span>
+              </label>
+              {{ field }}
             </p>
-        {% else %}
+            {% else %}
             <p class="input hidden">
-                {{ field }}
+              {{ field }}
             </p>
-        {% endif %}
-      {% endfor %}
-      <input type="submit" value="Create" />
-    </form>
+            {% endif %} {% endfor %}
+            <input type="submit" value="Create" />
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
 
 {% endblock %}
