@@ -28,15 +28,15 @@
           <h4 class="card-title">{{ list.0 }}</h4>
           <p class="card-text">
             {% if list.1 %}
-            <ul>
+            <ul class="list-unstyled ">
               {% for item in list.1 %}
-              <li>{{ item }}</li>
+              <li class="col-10 m-auto" style="border-bottom:2px solid black; font-size: 20px">{{ item }}</li>
               {% endfor %}
             </ul>
             {% else %} None {% endif %}
           </p>
           <div class="row w-100 justify-content-center mr-0 ml-0">
-            <a href="{% url 'view_list' group_id=address list_id=list.0.id %}" class="btn btn-danger mr-5 ml-auto">Edit List</a>
+            <a href="{% url 'view_list' group_id=address list_id=list.0.id %}" class="btn btn-danger m-auto">Edit List</a>
           </div>
         </div>
       </div>
