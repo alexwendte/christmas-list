@@ -4,28 +4,19 @@
   {% load static %}
 
   <form action="" method="post">
-    {% csrf_token %}
+    <div class="row w-100 justify-content-center">
+      {% csrf_token %}
+      {% for field in form %}
 
-    {% for field in form %}
-
-      <div class="row">
-        <div class="col align-self-center" style="text-align: center;">
+        <div class="col-10 name-box d-inline mt-5 mb-4" onclick="document.getElementById('id_name').select()">
           {{ field }}
         </div>
-      </div>
 
-    {% endfor %}
-    
-    <br>
-    <br>
-    
-    <div class="row">
-      <div class="col align-self-center" style="text-align: center;">
-          <input type="submit" value="Create Group" />
-      </div>
+      {% endfor %}
     </div>
-
-    
+    <div class="row w-100 justify-content-center">
+      <input class="btn btn-danger d-inline mt-0 mb-4" type="submit" value="Create Group" />
+    </div>
   </form>
 
 {% endblock %}

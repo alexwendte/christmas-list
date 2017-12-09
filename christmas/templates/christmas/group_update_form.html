@@ -1,27 +1,50 @@
-{% extends 'christmas/base.html' %}
-{% block title %} Group ID {% endblock %}
-{% block content %}
+{% extends 'christmas/base.html' %} {% block title %} Group ID {% endblock %} {% block content %}
 
-  <div class="group-update flex-body">
-    
-    <form action="" method="post">
-        <h2>Edit your list set name</h2>
-        {% csrf_token %}
-        {% for field in form %}
-          {{ field }}
-        {% endfor %}
-        <input type="submit" value="Update" />
-    </form>
-    
-    <ul>
-      {% for item in object_list %}
-        <li><a href="{% url 'view_list' group_id=address list_id=item.id %}">{{ item }}</a></li>
-      {% endfor %}
-    </ul>
 
-    <div class="row">
-      <a class="button" href="{% url 'create_list' group_id=address %}">Create a new list</a>
+<form action="" method="post">
+  <div class="row w-100 justify-content-center mr-0 ml-0">
+    {% csrf_token %} {% for field in form %}
+
+    <div class="col-12 name-box d-inline mt-2 mb-2" onclick="document.getElementById('update').hidden = false;">
+      {{ field }}
+    </div>
+
+    {% endfor %}
+
+    <div class="col-md-auto d-inline mt-2 mb-2">
+      <input hidden class="btn btn-danger self-algin-center h-100" type="submit" value="Update Group Name" id="update" />
     </div>
   </div>
+</form>
+<br>
+<br>
+<div class="row w-100 justify-content-center mr-0 ml-0">
+  <div class="col pr-0 pl-0">
+    <div class="card-columns">
 
+      {% for list in object_list %}
+      <div class="card mb-3">
+        <div class="card-block">
+          <h4 class="card-title">{{ list.0 }}</h4>
+          <p class="card-text">
+            {% if list.1 %}
+              <ul>
+                {% for item in list.1 %}
+                  <li>{{ item }}</li>
+                {% endfor %}
+              </ul>
+            {% else %}
+              None
+            {% endif %}
+          </p>
+          <a href="{% url 'view_list' group_id=address list_id=list.0.id %}" class="btn btn-danger">Edit List</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<div class="row w-100 justify-content-center mr-0 ml-0">
+  <a class="btn btn-danger" href="{% url 'create_list' group_id=address %}">Create a new list</a>
+</div>
 {% endblock %}

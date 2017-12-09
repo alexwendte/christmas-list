@@ -7,8 +7,8 @@ from .helpers import random_alpha_numeric
 # Create your models here.
 class Group(models.Model):
     
-    name = models.CharField(max_length=20)
-    address = models.CharField(max_length=15, default=random_alpha_numeric(7))
+    name = models.CharField(max_length=20, unique=True, blank=False)
+    address = models.CharField(max_length=15, default=random_alpha_numeric)
     # users = models.ManyToManyField('Profile', related_name='parent_group')
 
     def __str__(self):

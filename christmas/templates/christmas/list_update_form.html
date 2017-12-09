@@ -1,29 +1,21 @@
-{% extends 'christmas/base.html' %}
-{% block title %} Edit List {% endblock %}
-{% block content %}
-{% load static %}
+{% extends 'christmas/base.html' %} {% block title %} Edit List {% endblock %} {% block content %} {% load static %}
 
-<div class="list-update flex-body">
-    
-    <form action="" method="post">
-        <h2>Edit your list set name</h2>
-        {% csrf_token %}
-        {% for field in form %}
-            {{ field }}
-        {% endfor %}
-        <input type="submit" value="Update" />
-    </form>
-    
-    <ul>
-        {% for item in object_list %}
-            <li><a href="{% url 'view_item' group_id=address list_id=list_id item_id=item.id %}">{{ item }}</a></li>
-        {% endfor %}
-    </ul>
+<form action="" method="post">
+  <div class="row w-100 justify-content-center mr-0 ml-0">
+    {% csrf_token %} {% for field in form %}
 
-    <div class="row">
-        <a class="button" href="{% url 'create_item' group_id=address list_id=list_id %}">Add a new item</a>
+    <div class="col-12 name-box d-inline mt-2 mb-2" onclick="document.getElementById('update').hidden = false;">
+      {{ field }}
     </div>
 
-</div>
-    
+    {% endfor %}
+
+    <div class="col-md-auto d-inline mt-2 mb-2">
+      <input hidden class="btn btn-danger self-algin-center h-100" type="submit" value="Update Name" id="update" />
+    </div>
+  </div>
+</form>
+<br>
+<br>
+
 {%endblock%}

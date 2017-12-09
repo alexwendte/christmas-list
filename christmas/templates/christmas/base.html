@@ -1,58 +1,67 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>
-            {% block title %}{% endblock %}
-        </title>
-        <!-- <script src="{% static 'christmas/scripts/base.js' %}"></script> -->
-        <!-- <script src="{% static 'christmas/scripts/index.js' %}"></script> -->
-        <!-- <script src="https://apis.google.com/js/platform.js" async defer></script> -->
-        <!-- <meta name="google-signin-client_id" content="421515564266-3r1jp4ticqthamh9782vtkgj0l4v96re.apps.googleusercontent.com"> -->
-        
-        <!-- Load Icon -->
-        <link rel="shortcut icon" href="{% static 'christmas/images/christmas-tree-icon.png' %}">
+<html lang="en" class="h-100">
 
-        <link rel="stylesheet" type="text/css" href="{% static 'christmas/css/custom.css' %}">
-        
-        <!-- Bootstrap CSS -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    </head>
-    <body class="body-custom">
+<head>
+  <title>
+    {% block title %}{% endblock %}
+  </title>
+  <!-- <script src="{% static 'christmas/scripts/base.js' %}"></script> -->
+  <!-- <script src="{% static 'christmas/scripts/index.js' %}"></script> -->
+  <!-- <script src="https://apis.google.com/js/platform.js" async defer></script> -->
+  <!-- <meta name="google-signin-client_id" content="421515564266-3r1jp4ticqthamh9782vtkgj0l4v96re.apps.googleusercontent.com"> -->
 
-        <nav class="navbar navbar-toggleable-sm navbar-light navbar-custom">
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+  <!-- Load Icon -->
+  <link rel="shortcut icon" href="{% static 'christmas/images/christmas-tree-icon.png' %}">
 
-            <a class="navbar-brand text-white">
-                <img src="{% static 'christmas/images/christmas-tree-icon.png' %}" width="30" height="30" alt="">
-                Christmas Made Simple
-            </a>
+  <link rel="stylesheet" type="text/css" href="{% static 'christmas/css/custom.css' %}">
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="{% url 'about' %}">About the Site</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="{% url 'create_group' %}">Start a new group</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        
-        <div class="container" style="padding: 50px 0px">
-            {% block content %}
-            {% endblock %}
-        </div>
-        
-        <!-- Bootstrap javascript files -->
-        <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-    </body>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+
+  <!-- Bootstrap CSS -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+    crossorigin="anonymous">
+</head>
+
+<body class="body-custom h-100">
+
+  <nav class="navbar navbar-toggleable-sm navbar-light navbar-custom">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <a class="navbar-brand text-white mr-3">
+      <img src="{% static 'christmas/images/christmas-tree-icon.png' %}" width="30" height="30" alt=""> Christmas Made Simple
+    </a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item ml-3">
+          <a class="nav-link" href="{% url 'about' %}">About the Site</a>
+        </li>
+        <li class="nav-item ml-3">
+          <a class="nav-link" href="{% url 'create_group' %}">Start a new group</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container pt-5 h-75">
+    {% block content %} {% endblock %}
+  </div>
+
+  <!-- Bootstrap javascript files -->
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>

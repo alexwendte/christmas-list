@@ -47,8 +47,20 @@ class GroupUpdateView(UpdateView):
         context = super(GroupUpdateView, self).get_context_data(**kwargs)
         context['address'] = self.kwargs['group_id']
         current_group = get_object_or_404(Group, address=self.kwargs['group_id'])
-        context['object_list'] = List.objects.filter(parent_group=current_group)
+
+        object_list = []
+        all_list = List.objects.filter(parent_group=current_group)
+        for current_list in all_list:
+            lst = (current_list, Item.objects.filter(parent_list=current_list))
+            object_list.append(lst)
+            
+        context['object_list'] = object_list
         return context
+
+    def get_initial(self, **kwargs):
+        initial = self.initial
+        initial['name'] = get_object_or_404(Group, address=self.kwargs['group_id']).name
+        return initial
 
 
 class ListCreateView(CreateView):
@@ -61,6 +73,11 @@ class ListCreateView(CreateView):
          parent_group = get_object_or_404(Group, address=self.kwargs['group_id'])
          form.instance.parent_group = parent_group
          return super(ListCreateView, self).form_valid(form)
+
+    def get_initial(self, **kwargs):
+        initial = self.initial
+        initial['name'] = ""
+        return initial
 
 
 class ListUpdateView(UpdateView):
@@ -79,6 +96,12 @@ class ListUpdateView(UpdateView):
         context['list_id'] = current_list.id
         context['object_list'] = Item.objects.filter(parent_list=current_list)
         return context
+
+    def get_initial(self, **kwargs):
+        initial = self.initial
+        initial['name'] = get_object_or_404(List, id=self.kwargs['list_id']).name
+        return initial
+    
 
 
 class ItemCreateView(CreateView):

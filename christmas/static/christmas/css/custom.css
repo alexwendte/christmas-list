@@ -1,7 +1,44 @@
-.navbar-custom{
+.navbar-custom {
     background-color: rgb(224, 47, 56);
 }
 
 .body-custom{
     background-color: rgb(47, 224, 115);
 }
+
+nav {
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.7);
+}
+
+.name-box #id_name {
+    background-color: rgba(255, 255, 255, 0);
+    text-align: center;
+    color: white;
+    border: 0px;
+    font-size: 40px;
+    width: 100%;
+    font-family: 'Lobster', cursive;
+    text-shadow: -1px 0 rgba(0, 0, 0, 0.2), 0 1px rgba(0, 0, 0, 0.2), 1px 0 rgba(0, 0, 0, 0.2), 0 -1px rgba(0, 0, 0, 0.2);
+}
+
+.name-box #id_name:focus {
+    box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);
+    border: 0px;
+    outline: none;
+}
+
+/* .center {
+    margin: 0 auto;
+    width: 200px; 
+}
+
+.button{
+    background-color: rgb(224, 47, 56);
+    border-radius: 25px;
+    border: 10px solid rgb(224, 47, 56);
+    width: 200px;
+}
+
+.button:hover{
+    box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.7);
+} */
