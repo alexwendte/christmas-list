@@ -1,0 +1,22 @@
+{% extends 'christmas/base.html' %}
+{% block title %} Group ID {% endblock %}
+{% block content %}
+
+  <div class="group-update flex-body">
+    
+    <form class="flex-form" action="" method="post">
+        <h2>Edit your list set name</h2>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Update" />
+    </form>
+
+    {% for item in object.items %}
+        {{ item }}
+    {% endfor %}
+    <div class="row">
+      <a class="button" href="{% url 'create_list' group_id=address %}">Create a new list</a>
+    </div>
+  </div>
+
+{% endblock %}

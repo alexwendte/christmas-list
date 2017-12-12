@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse, get_object_or_404
 
-from django.views.generic.base import TemplateView
+from django.views.generic.base import View, TemplateView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.views.generic.edit import FormView, CreateView, UpdateView, DeleteView
@@ -9,16 +9,25 @@ from .models import *
 from .forms import *
 
 # Create your views here.
-class HomepageView(TemplateView):
+class AboutView(TemplateView):
 
-    template_name = 'christmas/index.html'
+    template_name = 'christmas/about.html'
 
+class TokenView(View):
+
+    def post(self, request, *args, **kwargs):
+        print(request.POST)
 
 class GroupCreateView(CreateView):
     
     model = Group
     fields = ['name']
     template_name_suffix = '_create_form'
+
+    def get_initial(self, **kwargs):
+        initial = self.initial
+        initial['name'] = "New Group Name"
+        return initial
 
 
 class InviteView(FormView):
@@ -37,20 +46,38 @@ class GroupUpdateView(UpdateView):
     def get_context_data(self, **kwargs):
         context = super(GroupUpdateView, self).get_context_data(**kwargs)
         context['address'] = self.kwargs['group_id']
-        context['object_list'] = get_object_or_404(Group, address=self.kwargs['group_id'])
+        current_group = get_object_or_404(Group, address=self.kwargs['group_id'])
+
+        object_list = []
+        all_list = List.objects.filter(parent_group=current_group)
+        for current_list in all_list:
+            lst = (current_list, Item.objects.filter(parent_list=current_list))
+            object_list.append(lst)
+            
+        context['object_list'] = object_list
         return context
+
+    def get_initial(self, **kwargs):
+        initial = self.initial
+        initial['name'] = get_object_or_404(Group, address=self.kwargs['group_id']).name
+        return initial
 
 
 class ListCreateView(CreateView):
     
     model = List
-    form_class = ListCreateForm
+    fields = ['name']
     template_name_suffix = '_create_form'
 
+    def form_valid(self, form):
+         parent_group = get_object_or_404(Group, address=self.kwargs['group_id'])
+         form.instance.parent_group = parent_group
+         return super(ListCreateView, self).form_valid(form)
+
     def get_initial(self, **kwargs):
-        newInitial = self.initial
-        newInitial['group_address'] = self.kwargs['group_id']
-        return newInitial
+        initial = self.initial
+        initial['name'] = ""
+        return initial
 
 
 class ListUpdateView(UpdateView):
@@ -65,22 +92,28 @@ class ListUpdateView(UpdateView):
     def get_context_data(self, **kwargs):
         context = super(ListUpdateView, self).get_context_data(**kwargs)
         context['address'] = self.kwargs['group_id']
-        print(type(get_object_or_404(List, id=self.kwargs['list_id']).items))
-        # context['object_list'] = 
+        current_list = get_object_or_404(List, id=self.kwargs['list_id'])
+        context['list_id'] = current_list.id
+        context['object_list'] = Item.objects.filter(parent_list=current_list)
         return context
+
+    def get_initial(self, **kwargs):
+        initial = self.initial
+        initial['name'] = get_object_or_404(List, id=self.kwargs['list_id']).name
+        return initial
+    
 
 
 class ItemCreateView(CreateView):
     
     model = Item
-    form_class = ItemCreateForm
+    fields = ['title', 'description']
     template_name_suffix = '_create_form'
 
-    def get_initial(self, **kwargs):
-        newInitial = self.initial
-        newInitial['group_address'] = self.kwargs['group_id']
-        newInitial['parent_id'] = self.kwargs['list_id']
-        return newInitial
+    def form_valid(self, form):
+         parent_list = get_object_or_404(List, id=self.kwargs['list_id'])
+         form.instance.parent_list = parent_list
+         return super(ItemCreateView, self).form_valid(form)
 
 
 class ItemUpdateView(UpdateView):

@@ -1,22 +1,47 @@
-{% extends 'christmas/base.html' %}
-{% block title %} Edit List {% endblock %}
-{% block content %}
-{% load static %}
+{% extends 'christmas/base.html' %} {% block title %} Edit List {% endblock %} {% block content %} {% load static %}
 
-<div class="list-update flex-body">
-    
-    <form class="flex-form" action="" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Update" />
-    </form>
-    <p>
-        {{ object_list }}
-        {% for object in object_list %}
-            {{ object }}
+
+<div class="row w-100 justify-content-center mr-0 ml-0">
+  <div class="card" style="max-width: 500px;">
+    <div class="card-block">
+      <div class="row w-100 justify-content-left mr-0 ml-0">
+        <button class="close ml-0 mr-auto" aria-label="Close">
+          <a href="{% url 'view_group' group_id=address %}" style="text-decoration: none; color: black;" aria-hidden="true">&times;</a>
+        </button>
+      </div>
+      <form action="" method="post">
+        {% csrf_token %} {% for field in form %}
+        <div class="col-12 list-name-box p-0 mb-2" onclick="document.getElementById('update').hidden = false;">
+          {{ field }}
+        </div>
         {% endfor %}
-    </p>
 
+        <div class="col-md-auto text-center">
+          <input hidden class="btn btn-danger self-algin-center h-100 mt-2 mb-2" type="submit" value="Update Name" id="update" />
+        </div>
+      </form>
+      <br>
+      <div class="card-text">
+        {% if object_list %}
+        <ul class="list-unstyled ">
+          {% for item in object_list %}
+          <li class="col-10 m-auto clearfix" style="border-bottom:2px solid black; font-size: 20px">
+            <span class="float-left">{{ item }}</span>
+            <span class="float-right material-icons"><a style="text-decoration: none; color: black;" href="{% url 'view_item' group_id=address list_id=list_id item_id=item.id %}">mode_edit</a></span>
+          </li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <p>There are no items here yet!
+          <br>Press the Add Item button to get started!!
+        </p>
+        {% endif %}
+      </div>
+      <br>
+      <div class="col-12 text-center">
+        <a class="btn btn-danger" style="width: 150px; margin: 0 auto;" href="{% url 'create_item' group_id=address list_id=list_id %}">Add Item</a>
+      </div>
+    </div>
+  </div>
 </div>
-    
 {%endblock%}
