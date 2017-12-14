@@ -49,7 +49,7 @@ class GroupUpdateView(UpdateView):
         current_group = get_object_or_404(Group, address=self.kwargs['group_id'])
 
         object_list = []
-        all_list = List.objects.filter(parent_group=current_group)
+        all_list = List.objects.filter(parent_group=current_group).order_by('name')
         for current_list in all_list:
             lst = (current_list, Item.objects.filter(parent_list=current_list))
             object_list.append(lst)
@@ -73,6 +73,11 @@ class ListCreateView(CreateView):
          parent_group = get_object_or_404(Group, address=self.kwargs['group_id'])
          form.instance.parent_group = parent_group
          return super(ListCreateView, self).form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super(ListCreateView, self).get_context_data(**kwargs)
+        context['address'] = self.kwargs['group_id']
+        return context
 
     def get_initial(self, **kwargs):
         initial = self.initial
@@ -103,6 +108,23 @@ class ListUpdateView(UpdateView):
         return initial
     
 
+class ListDeleteView(DeleteView):
+
+    model = List
+    template_name_suffix = '_confirm_delete'
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(List, id=self.kwargs['list_id'])
+
+    def get_context_data(self, **kwargs):
+        context = super(ListDeleteView, self).get_context_data(**kwargs)
+        context['address'] = self.kwargs['group_id']
+        context['list_id'] = self.kwargs['list_id']
+        return context
+
+    def get_success_url(self):
+        return reverse_lazy('view_group', kwargs={'group_id': self.kwargs['group_id']})
+
 
 class ItemCreateView(CreateView):
     
@@ -111,16 +133,52 @@ class ItemCreateView(CreateView):
     template_name_suffix = '_create_form'
 
     def form_valid(self, form):
-         parent_list = get_object_or_404(List, id=self.kwargs['list_id'])
-         form.instance.parent_list = parent_list
-         return super(ItemCreateView, self).form_valid(form)
+        parent_list = get_object_or_404(List, id=self.kwargs['list_id'])
+        form.instance.parent_list = parent_list
+        return super(ItemCreateView, self).form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super(ItemCreateView, self).get_context_data(**kwargs)
+        context['address'] = self.kwargs['group_id']
+        context['list_id'] = self.kwargs['list_id']
+        return context
+
+    def get_success_url(self):
+        return reverse_lazy('view_list', kwargs={'group_id': self.kwargs['group_id'], 'list_id': self.kwargs['list_id']})
 
 
 class ItemUpdateView(UpdateView):
     
     model = Item
-    fields = ['title', 'description', 'link']
+    fields = ['title', 'description']
     template_name_suffix = '_update_form'
 
     def get_object(self, queryset=None):
         return get_object_or_404(Item, id=self.kwargs['item_id'])
+
+    def get_context_data(self, **kwargs):
+        context = super(ItemUpdateView, self).get_context_data(**kwargs)
+        context['address'] = self.kwargs['group_id']
+        context['list_id'] = self.kwargs['list_id']
+        return context
+
+    def get_success_url(self):
+        return reverse_lazy('view_list', kwargs={'group_id': self.kwargs['group_id'], 'list_id': self.kwargs['list_id']})
+
+
+class ItemDeleteView(DeleteView):
+
+    model = Item
+    template_name_suffix = '_confirm_delete'
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(Item, id=self.kwargs['item_id'])
+
+    def get_context_data(self, **kwargs):
+        context = super(ItemDeleteView, self).get_context_data(**kwargs)
+        context['address'] = self.kwargs['group_id']
+        context['list_id'] = self.kwargs['list_id']
+        return context
+
+    def get_success_url(self):
+        return reverse_lazy('view_list', kwargs={'group_id': self.kwargs['group_id'], 'list_id': self.kwargs['list_id']})

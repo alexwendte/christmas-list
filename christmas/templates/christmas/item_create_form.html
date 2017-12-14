@@ -1,14 +1,19 @@
-{% extends 'christmas/base.html' %} {% block title %} Create a Set {% endblock %} {% block content %} {% load static %}
+{% extends 'christmas/base.html' %} {% block title %} Add Item {% endblock %} {% block content %} {% load static %}
 
 <div class="row w-100 h-100 justify-content-center mr-0 ml-0">
   <div class="col m-auto pb-5 pr-0 pl-0">
     <div class="card m-auto" style="max-width: 350px;">
       <div class="card-block text-center">
+        <div class="row w-100 justify-content-left mr-0 ml-0">
+          <button class="close ml-0 mr-auto" aria-label="Close">
+            <a href="{% url 'view_list' group_id=address list_id=list_id %}" style="text-decoration: none; color: black;" aria-hidden="true">&times;</a>
+          </button>
+        </div>
         <h3 class="card-title">Add Item</h3>
         <div class="card-text pt-3 pb-2">
           <form action="" method="post">
             {% csrf_token %} {% for field in form %} {% if not field.is_hidden %}
-            <p class="input">
+            <p class="input-field">
               <label for="{{ field.id_for_label }}" class="noselect">
                 <span>{{ field.label }}</span>
               </label>

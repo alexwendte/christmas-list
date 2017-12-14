@@ -1,4 +1,4 @@
-{% extends 'christmas/base.html' %} {% block title %} Edit List {% endblock %} {% block content %} {% load static %}
+{% extends 'christmas/base.html' %} {% block title %} View List {% endblock %} {% block content %} {% load static %}
 
 
 <div class="row w-100 justify-content-center mr-0 ml-0">
@@ -25,9 +25,13 @@
         {% if object_list %}
         <ul class="list-unstyled ">
           {% for item in object_list %}
-          <li class="col-10 m-auto clearfix" style="border-bottom:2px solid black; font-size: 20px">
+          <li class="col-12 m-auto pl-2 pr-2 clearfix" style="border-bottom:2px solid black; font-size: 20px">
             <span class="float-left">{{ item }}</span>
-            <span class="float-right material-icons"><a style="text-decoration: none; color: black;" href="{% url 'view_item' group_id=address list_id=list_id item_id=item.id %}">mode_edit</a></span>
+            <span class="float-right">
+              <a style="text-decoration: none; color: black;" href="{% url 'view_item' group_id=address list_id=list_id item_id=item.id %}">
+                <img href="{% static 'christmas/images/delete.png' %}">
+              </a>
+            </span>
           </li>
           {% endfor %}
         </ul>
@@ -38,8 +42,13 @@
         {% endif %}
       </div>
       <br>
-      <div class="col-12 text-center">
-        <a class="btn btn-danger" style="width: 150px; margin: 0 auto;" href="{% url 'create_item' group_id=address list_id=list_id %}">Add Item</a>
+      <div class="row w-100 justify-content-center mr-0 ml-0">
+        <div class="col-6 text-center">
+          <a class="btn btn-danger" style="width: 110px; margin: 0 auto;" href="{% url 'delete_list' group_id=address list_id=list_id %}">Delete List</a>
+        </div>
+        <div class="col-6 text-center">
+          <a class="btn btn-danger" style="width: 110px; margin: 0 auto;" href="{% url 'create_item' group_id=address list_id=list_id %}">Add Item</a>
+        </div>
       </div>
     </div>
   </div>
