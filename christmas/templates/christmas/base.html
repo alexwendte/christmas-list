@@ -1,27 +1,68 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>
-            {% block title %}{% endblock %}
-        </title>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="shortcut icon" href="{% static 'christmas/images/favicon.ico' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'christmas/styles/css/style.css' %}">
-        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-        <script src="{% static 'christmas/scripts/base.js' %}"></script>
-        <script src="https://apis.google.com/js/platform.js" async defer></script>
-        <meta name="google-signin-client_id" content="421515564266-3r1jp4ticqthamh9782vtkgj0l4v96re.apps.googleusercontent.com">
-    </head>
-    <body>
-        <div class="header">
-            <span class="main">Christmas Made Simple</span>
-            <a class="sign-out button" href="#" onclick="signOut();">Sign out</a>
-        </div>
+<html lang="en" class="h-100">
 
-        <a href="#">iuhhghipohiug</a>
-        {% block content %}
-        {% endblock %}
-    </body>
+<head>
+  <title>
+    {% block title %}{% endblock %}
+  </title>
+  <!-- <script src="{% static 'christmas/scripts/base.js' %}"></script> -->
+  <!-- <script src="{% static 'christmas/scripts/index.js' %}"></script> -->
+  <!-- <script src="https://apis.google.com/js/platform.js" async defer></script> -->
+  <!-- <meta name="google-signin-client_id" content="421515564266-3r1jp4ticqthamh9782vtkgj0l4v96re.apps.googleusercontent.com"> -->
+
+  <!-- Load Icon -->
+  <link rel="shortcut icon" href="{% static 'christmas/images/christmas-tree-icon.png' %}">
+
+  <link rel="stylesheet" type="text/css" href="{% static 'christmas/css/custom.css' %}">
+
+  <!-- Google CSS -->
+  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
+
+  <!-- Bootstrap CSS -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+    crossorigin="anonymous">
+</head>
+
+<body class="body-custom h-100">
+
+  <nav class="navbar navbar-toggleable-sm navbar-light navbar-custom">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <a class="navbar-brand text-white mr-3">
+      <img src="{% static 'christmas/images/christmas-tree-icon.png' %}" width="30" height="30" alt=""> Christmas Made Simple
+    </a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item ml-3">
+          <a class="nav-link" href="{% url 'about' %}">About the Site</a>
+        </li>
+        <li class="nav-item ml-3">
+          <a class="nav-link" href="{% url 'create_group' %}">Start a new group</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container pt-5 h-75">
+    {% block content %} {% endblock %}
+  </div>
+
+  <!-- Bootstrap javascript files -->
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>

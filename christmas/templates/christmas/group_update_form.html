@@ -1,22 +1,56 @@
-{% extends 'christmas/base.html' %}
-{% block title %} Group ID {% endblock %}
-{% block content %}
+{% extends 'christmas/base.html' %} {% block title %} Christmas Made Simple {% endblock %} {% block content %}
 
-  <div class="group-update flex-body">
-    
-    <form class="flex-form" action="" method="post">
-        <h2>Edit your list set name</h2>
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Update" />
-    </form>
 
-    {% for item in object.items %}
-        {{ item }}
+<form action="" method="post">
+  <div class="row w-100 justify-content-center mr-0 ml-0">
+    {% csrf_token %} {% for field in form %}
+
+    <div class="col-12 name-box d-inline mt-2 mb-2" onclick="document.getElementById('update').hidden = false;">
+      {{ field }}
+    </div>
+
     {% endfor %}
-    <div class="row">
-      <a class="button" href="{% url 'create_list' group_id=address %}">Create a new list</a>
+
+    <div class="col-md-auto d-inline mt-2 mb-2">
+      <input hidden class="btn btn-danger self-algin-center h-100" type="submit" value="Update Group Name" id="update" />
     </div>
   </div>
-
+</form>
+<br>
+<br>
+<div class="row w-100 justify-content-center mr-0 ml-0">
+  <div class="col pr-0 pl-0">
+    <div class="card-deck mb-3">
+      {% for list in object_list %}
+      <div class="card p-2 mr-auto ml-auto" style="min-width: 275px; max-width: 400px; background-color: rgba(0,0,0,0); border: 0px;">
+        <div class="card w-100 h-100">
+          <div class="card-block">
+            <h3 class="card-title">{{ list.0 }}</h3>
+            <p class="card-text text-center">
+              {% if list.1 %}
+              <ul class="list-unstyled ">
+                {% for item in list.1 %}
+                <a class="border-hover" style="text-decoration: none; color: black;" href="{% url 'view_item' group_id=address list_id=list.0.id item_id=item.id %}">
+                  <li class="col-12 m-auto pl-2 pr-0" style="border-bottom:2px solid black; font-size: 20px">
+                    <span class="">{{ item }}</span>
+                    <!-- <span class="float-right material-icons"><a style="text-decoration: none; color: black;" href="{% url 'view_item' group_id=address list_id=list.0.id item_id=item.id %}">mode_edit</a></span> -->
+                  </li>
+                </a>
+                {% endfor %}
+              </ul>
+              {% else %} No items yet! {% endif %}
+            </p>
+          </div>
+          <div class="card-footer text-center pt-0 pb-3" style="background-color: white; border: 0px;">
+            <a href="{% url 'view_list' group_id=address list_id=list.0.id %}" class="btn btn-danger">Edit List</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<div class="row w-100 justify-content-center mr-0 ml-0 pb-5">
+  <a class="btn btn-danger m-auto" href="{% url 'create_list' group_id=address %}">Create a new list</a>
+</div>
 {% endblock %}

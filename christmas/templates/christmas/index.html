@@ -1,21 +1,20 @@
 {% extends 'christmas/base.html' %}
-{% block title %} Index {% endblock %}
+{% block title %} Christmas Made Simple {% endblock %}
 {% block content %}
 {% load static %}
 
-<div class="index flex-body">
-  <div class="card">
-      <div class="row">
-        <p>Christmas lists made</p>
-        <p>SIMPLE</p>
-      </div>
+
+
+<div class="container">
     <div class="row">
-      <a class="button" href="{% url 'create_group' %}">Create A New Collection</a>
-      <a class="button" href="">Visit an Existing Collection</a>
+      <p>Christmas lists made</p>
+      <p>SIMPLE</p>
     </div>
-    <div class="row">
-      <div class="g-signin2" data-onsuccess="onSignIn"></div>
-    </div>
+  <div class="row">
+    <a class="button" href="{% url 'create_group' %}">Create A New Collection</a>
+  </div>
+  <div class="row">
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
   </div>
 </div>
 

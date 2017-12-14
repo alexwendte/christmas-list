@@ -7,21 +7,20 @@
         <div class="card-block text-center">
           <div class="row w-100 justify-content-left mr-0 ml-0">
             <button class="close ml-0 mr-auto" aria-label="Close">
-              <a href="{% url 'view_group' group_id=address %}" style="text-decoration: none; color: black;" aria-hidden="true">&times;</a>
+              <a href="{% url 'view_list' group_id=address list_id=list_id %}" style="text-decoration: none; color: black;" aria-hidden="true">&times;</a>
             </button>
           </div>
-          <h3 class="card-title">Create a New List</h3>
-          <div class="card-text pt-4 pb-4">
-            {% csrf_token %} {% for field in form %}
-            <div class="input-field">
-              <label for="{{ field.id_for_label }}" class="noselect">
-                <span>{{ field.label }}</span>
-              </label>
-              {{ field }}
-            </div>
-            {% endfor %}
+          <div class="card-text pr-3 pl-3 pb-2 pt-2 mb-3">
+            {% csrf_token %}
+            <h5>
+              Are you sure you want to delete "{{ object }}"?
+            </h5>
           </div>
-          <input class="btn btn-danger" type="submit" value="Create" />
+          <input class="btn btn-danger mb-3" type="submit" value="Confirm" />
+          <p class="mb-0" style="font-size: 12px;">
+            This will remove all items associated with this list and this action
+            <b>cannot be undo.</b>
+          </p>
         </div>
       </div>
     </div>
