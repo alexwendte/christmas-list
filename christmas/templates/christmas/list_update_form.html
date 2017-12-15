@@ -23,20 +23,32 @@
       <br>
       <div class="card-text">
         {% if object_list %}
-        <ul class="list-unstyled ">
-          {% for item in object_list %}
-          <li class="col-12 m-auto pl-2 pr-2 clearfix" style="border-bottom:2px solid black; font-size: 20px">
-            <span class="float-left">{{ item }}</span>
-            <span class="float-right">
-              <a style="text-decoration: none; color: black;" href="{% url 'view_item' group_id=address list_id=list_id item_id=item.id %}">
-                <img href="{% static 'christmas/images/delete.png' %}">
+        <div id="accordion" role="tablist" aria-multiselectable="true">
+            {% for item in object_list %}
+            <div class="col-12 m-auto pl-2 pr-2" style="border-bottom:2px solid black; font-size: 20px" role="tab" id="heading{{ item.id }}">
+              <a style="text-decoration: none; color: black;" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ item.id }}"
+                aria-expanded="true" aria-controls="collapse{{ item.id }}">
+                {{ item }}
               </a>
-            </span>
-          </li>
-          {% endfor %}
-        </ul>
+            </div>
+            <div id="collapse{{ item.id }}" class="collapse" role="tabpanel" aria-labelledby="heading{{ item.id }}">
+              <div class="card-block">
+                <p>
+                  {{ item.description }}
+                </p>
+                <div class="row w-100 mr-0 ml-0">
+                  <div class="col-12">
+                    <a class="btn btn-danger m-auto" style="width: 100px;" href="{% url 'view_item' group_id=address list_id=list_id item_id=item.id %}">
+                      Edit Item
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
         {% else %}
-        <p>There are no items here yet!
+        <p class="text-center">There are no items here yet!
           <br>Press the Add Item button to get started!!
         </p>
         {% endif %}
