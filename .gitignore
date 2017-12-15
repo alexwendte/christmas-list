@@ -6,3 +6,4 @@ mysite/local_settings.py
 googleApi.txt
 venv/
 staticfiles/
+db.sqlite3
